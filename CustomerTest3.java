@@ -25,7 +25,7 @@ public class CustomerTest {
 			vc.calcPrice(1000);
 			System.out.println(vc.showCustomerInfo() + price);
 //			VIP로 만들었지만 타입은 Customer
-//			가상메서드가 호출됨 900
+//			재정의 했으므로 VIPcustomer 호출됨 900
 	}
 
 }
