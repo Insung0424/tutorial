@@ -1,0 +1,41 @@
+package ch13;
+
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.TreeSet;
+
+public class MemberTreeSet {
+		
+		private TreeSet<Member> treeSet;
+		
+		public MemberTreeSet () {
+			treeSet = new TreeSet<Member>(new Member());
+		}//Comparator를 사용할 때 는 <Member>(new Member());처럼 지정해줘야함
+				
+		public void addMember(Member member) {
+			treeSet.add(member);
+		}
+		
+		public boolean removeMember(int memberId) {
+			
+			Iterator ir = treeSet.iterator();
+			
+			while(ir.hasNext()) {
+				Member member = (Member) ir.next();
+				int tempId = member.getMemberId();
+				if(tempId == memberId) {
+					treeSet.remove(member);
+					return true;
+				}
+			}
+			System.out.println(memberId + " 가 존재하지 않습니다.");
+			return false;
+		}
+		
+		public void showAllMember() {
+			for (Member member : treeSet) {
+				System.out.println(member);	
+			}
+			System.out.println();
+		}
+}
