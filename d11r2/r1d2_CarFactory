@@ -1,0 +1,9 @@
+//싱글톤 패턴과 static 예제
+static을 사용하여 instance 생성단계에서 멈춤
+기본생성자가 필요함
+getInstance는 인스턴스가 없으면 생성해주기 위함이므로 if로 null인지 확인
+createCar는 Car에서 직접생성이 아니라 Factory에서 생성함 void로하면 안됨
+
+int serialNumber가  매번사용되므로 
+static으로 선언해서 stack메모리에서 대기되도록 함 
+Car class 는 Car를 생성시 구현부만 제공함
