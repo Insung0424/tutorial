@@ -10,17 +10,17 @@ public class Student {
 	//학생의 성적 리스트 
 	private ArrayList<Score> scoreList = new ArrayList<Score>(); 
 	
-	
+	//학생생성자(변수)
 	public Student( int studentId, String studentName, Subject majorSubject){
 		this.studentId = studentId;
 		this.studentName = studentName;
 		this.majorSubject = majorSubject;
 	}
-	//addSubjectSocre() 메서드가 호출되면 리스트에 추가 됨
+	//addSubjectSocre(점수) 메서드가 호출되면 리스트에 추가 됨
 	public void addSubjectScore(Score score){
 		scoreList.add(score);
 	}
-
+//학생아이디와 이름,전공,성적리스트의 get,set
 	public int getStudentId() {
 		return studentId;
 	}

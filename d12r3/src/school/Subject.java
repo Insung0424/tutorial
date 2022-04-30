@@ -11,12 +11,13 @@ public class Subject {
 	//수강 신청한 학생 리스트
 	private ArrayList<Student> studentList = new ArrayList<Student>();
 	
+	//Subject생성자 기본아님 변수받아서 생성하며 구현부에서 성적평가방식도 필요
 	public Subject(String subjectName, int subjectId){
 		this.subjectName = subjectName;
 		this.subjectId = subjectId;
 		this.gradeType = Define.AB_TYPE;   //기본적으로 A, B 타입
 	}
-
+//이름과 아이디,성적평가방식에 대한 get,set
 	public String getSubjectName() {
 		return subjectName;
 	}
@@ -32,7 +33,7 @@ public class Subject {
 	public void setSubjectId(int subjectId) {
 		this.subjectId = subjectId;
 	}
-
+//arrayList를 활용한 학생리스트와 과목리스트
 	public ArrayList<Student> getStudentList() {
 		return studentList;
 	}
@@ -49,8 +50,9 @@ public class Subject {
 		this.gradeType = gradeType;
 	}
 
-	//register() 메서드를 호출하면 리스트에 추가 됨
-	public void register(Student student){  //수강신청
+	//register() 메서드를 호출하면 학생리스트에 추가 됨
+	//수강신청 = 변수의 학생이 해당과목을 수강해서 성적을 가지게 됨
+	public void register(Student student){  
 		studentList.add(student);
 	}
 }

@@ -4,7 +4,7 @@ public  class BasicEvaluation implements GradeEvaluation{
 
 	@Override
 	public String getGrade(int point) {
-		
+		//성적 구간마다 평가 점수 구분 if문 사용
 		String grade;
 		
 		if(point >=90 && point <=100)
