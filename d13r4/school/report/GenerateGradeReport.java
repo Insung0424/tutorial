@@ -2,14 +2,14 @@ package school.report;
 
 import java.util.ArrayList;
 
-import grade.BE;
-import grade.GE;
-import grade.ME;
-import pp1.Define;
+import grade.BasicEvaluation;
+import grade.GradeEvaluation;
+import grade.MajorEvaluation;
 import school.School;
 import school.Score;
 import school.Student;
 import school.Subject;
+import utils.Define;
 
 public class GenerateGradeReport {
 
@@ -61,7 +61,7 @@ public class GenerateGradeReport {
 		ArrayList<Score> scoreList = student.getScoreList();
 		int majorId = student.getMajorSubject().getSubjectId();
 		
-		GE[] gradeEvaluation = {new BE(), new ME()};  //학점 평가 클래스들
+		GradeEvaluation[] gradeEvaluation = {new BasicEvaluation(), new MajorEvaluation()};  //학점 평가 클래스들
 		
 		for(int i=0; i<scoreList.size(); i++){  // 학생이 가진 점수들 
 			
