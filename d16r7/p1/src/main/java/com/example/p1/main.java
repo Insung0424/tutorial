@@ -1,22 +1,7 @@
 package com.example.p1;
 
-import com.example.p1.Observer.Button;
-import com.example.p1.Observer.IButtonListener;
-import com.example.p1.adapter.*;
-import com.example.p1.aop.AopBrowser;
-import com.example.p1.decorator.*;
-import com.example.p1.facade.Ftp;
-import com.example.p1.facade.Reader;
-import com.example.p1.facade.SftpClient;
-import com.example.p1.facade.Writer;
-import com.example.p1.proxy.Browser;
-import com.example.p1.proxy.BrowserProxy;
-import com.example.p1.proxy.IBrowser;
-import com.example.p1.sigleton.AClazz;
-import com.example.p1.sigleton.BClazz;
-import com.example.p1.sigleton.SocketClient;
-
-import java.util.concurrent.atomic.AtomicLong;
+import com.example.p1.Strategy.*;
+import com.example.p1.adapter.Electronic110v;
 
 public class main {
 
@@ -102,29 +87,49 @@ public class main {
          */
         //파사드 패턴 : 여러객체와 실제사용하는 객체사이가 복잡해지면 중간에 파사드라는 객체를 두고
         // 파사드에서 제공하는 기능을 사용하는 방식 파사드는 각클래스의 기능을 명확히 알아야한다
-        Ftp ftpClient = new Ftp("www.goo.co.kr",22,"/home/etc");
-        ftpClient.connect();
-        ftpClient.moveDirectory();
+//        Ftp ftpClient = new Ftp("www.goo.co.kr",22,"/home/etc");
+//        ftpClient.connect();
+//        ftpClient.moveDirectory();
+//
+//        Writer writer = new Writer("text.tmp");
+//        writer.fileConnect();
+//        writer.write();
+//
+//        Reader reader = new Reader("text.tmp");
+//        reader.fileConnect();
+//        reader.fileRead();
+//
+//        reader.fileDisconnect();
+//        writer.fileDisconnect();
+//        ftpClient.disConnect();
+//
+//        SftpClient sftpClient = new SftpClient("www.goo.co.kr",22,"/home/etc","text.tmp");
+//        sftpClient.connect();
+//        sftpClient.write();
+//        sftpClient.read();
+//        sftpClient.disConnect();
 
-        Writer writer = new Writer("text.tmp");
-        writer.fileConnect();
-        writer.write();
+        //전략 패턴
+        //전략 메서드를 가진 전략 객체 와 이를 사용한 컨텍스트
+        //전략객체를 생성해 컨텍스트에 주입하는 클라이언트
+        Encoder encoder = new Encoder();
+          //base64
+        EncodingStrategy base64 = new Base64Strategy();//각각의 전략
+        //normal
+        EncodingStrategy normal = new NormalStrategy();//각각의 전략
 
-        Reader reader = new Reader("text.tmp");
-        reader.fileConnect();
-        reader.fileRead();
+        String message = "Hello java";
+        encoder.setEncodingStrategy(base64);
+        String base64result = encoder.getMessage(message);
+        System.out.println(base64result);
 
-        reader.fileDisconnect();
-        writer.fileDisconnect();
-        ftpClient.disConnect();
+        encoder.setEncodingStrategy(normal);
+        String normalResult = encoder.getMessage(message);
+        System.out.println(normalResult);
 
-        SftpClient sftpClient = new SftpClient("www.goo.co.kr",22,"/home/etc","text.tmp");
-        sftpClient.connect();
-        sftpClient.write();
-        sftpClient.read();
-        sftpClient.disConnect();
-
-
+        encoder.setEncodingStrategy(new AppendStrategy());//각각의 전략
+        String appendresult = encoder.getMessage(message);
+        System.out.println(appendresult);
     }
 
 
