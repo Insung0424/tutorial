@@ -1,0 +1,4 @@
+ObjectMapper  도중 error 발생
+Exception in thread "main" com.fasterxml.jackson.databind.exc.InvalidDefinitionException: Invalid type definition for type `com.example.objectmapper.dto.User`: Failed to construct BeanSerializer for [simple type, class com.example.objectmapper.dto.User]: (java.lang.IllegalArgumentException) Failed to call `setAccess()` on Method 'getName' (of class `com.example.objectmapper.dto.User`) due to `java.lang.reflect.InaccessibleObjectException`, problem: Unable to make public java.lang.String com.example.objectmapper.dto.User.getName() accessible: module com.example.objectmapper does not "exports com.example.objectmapper.dto" to module com.fasterxml.jackson.databind
+
+알 수 없음

@@ -1,0 +1,15 @@
+{
+  "name" : "tomas",
+  "age" : 12,
+  "cars" : [
+    {
+      "name" : "K5",
+      "car_number" : "11a2222",
+      "TYPE" : ""},
+    {
+      "name" : "Q5",
+      "car_number" : "11b3333",
+      "TYPE" : ""}
+  ]
+
+}
