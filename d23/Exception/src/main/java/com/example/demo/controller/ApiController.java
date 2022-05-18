@@ -3,22 +3,33 @@ package com.example.demo.controller;
 import com.example.demo.dto.User;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.lang.NonNull;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.Size;
 
 @RestController
 @RequestMapping("/api/user")
+@Validated
 public class ApiController {
 
     @GetMapping("")
-    public User get(@RequestParam(required = false) String name, @RequestParam(required = false) Integer age){
+    public User get(
+            @Size(min = 2) //글자 2자이상
+            @RequestParam String name,
+
+            @NonNull // 비워있으면 안됨
+            @Min(1)// 태어날때 1살
+            @RequestParam Integer age){
         User user = new User();
         user.setAge(age);
         user.setName(name);
 
-        int a = 10+age;
+//        int a = 10+age;
 
         return user;
     }
