@@ -1,0 +1,35 @@
+plugins {
+	id 'org.springframework.boot' version '2.7.0'
+	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+	id 'java'
+	id 'jacoco' //gradle - tasks -verification - jacoco 가 생김
+	// 그 곳에서 test를 더블클릭하면 실행됨
+	// 실패시 project - build - reports - test - index.html 을 열어서 browser로 열면 결과를 보여줌
+	//gradle - tasks -verification - jacoco 에서
+//	testreport 를 더블클릭으로 실행하면 보고서가 쓰이고
+//	project - build - reports - jacoco - index.htmld 을 열어서 browser로 열면 그래프로 결과가 나타남
+}
+group = 'com.example'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '11'
+
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	compileOnly 'org.projectlombok:lombok'
+	annotationProcessor 'org.projectlombok:lombok'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
